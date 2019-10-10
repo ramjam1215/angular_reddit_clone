@@ -1,0 +1,41 @@
+<!-- Render article properties-->
+<div class="four wide column center aligned votes">
+  <div class="ui statistic">
+    <div class="value">
+      {{ article.votes }}
+    </div>
+    <div class="label">
+      Points
+    </div>
+  </div>
+</div>
+
+<!-- arrow icons i believe come from semantics.min.css it imports from a google URL -->
+<div class="twelve wide column">
+  <a class="ui large header" href="{{ article.link }}">
+    {{ article.title }}
+  </a>
+  <!-- added a new domain func call -->
+  <div class="meta">( {{ article.domain() }} )</div>
+  <ul class="ui big horizontal list voters">
+    <li class="item">
+      <a href (click)="voteUp()">
+        <i class="arrow up icon"></i>
+        upvote
+      </a>
+    </li>
+    <li class="item">
+      <a href (click)="voteDown()">
+        <i class="arrow down icon"></i>
+        downvote
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- Used *ngIf to render a certain button-->
+<div *ngIf="showButton()">
+  <button (click)="flagArticle()">
+    Flag
+  </button>
+</div>
